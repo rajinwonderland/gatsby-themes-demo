@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 export default (props) => {
 	return (
 		<ThemeProvider theme={theme}>
-			<Layout>
+			<Layout px={3} py={3} mx="auto" maxWidth={1024}>
 				<Header>
 					<Box as="h1" fontSize={2} style={{ fontWeight: '300' }}>
 						Gatsby Theme Dracula

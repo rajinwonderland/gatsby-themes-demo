@@ -21,9 +21,9 @@ const components = {
 			return <Code {...props} />;
 		} else {
 			return (
-				<PreBlock>
+				<div className="code-toolbar">
 					<pre {...preProps} />
-				</PreBlock>
+				</div>
 			);
 		}
 	}
@@ -74,7 +74,9 @@ const fonts = {
 };
 const typography = {
 	...modern,
-
+	p: {
+		lineHeight: '1.5'
+	},
 	h1: {
 		fontWeight: '300'
 	},
@@ -107,7 +109,11 @@ const styles = (theme) => ({
 	},
 	a: {
 		color: get(theme, 'colors.link'),
-		fontStyle: 'none'
+		textDecoration: 'none',
+		'&:hover': {
+			color: get(theme, 'colors.blue'),
+			textDecoration: 'underline'
+		}
 	}
 });
 

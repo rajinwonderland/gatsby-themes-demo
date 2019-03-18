@@ -79,7 +79,11 @@ export const ColorScheme = styled('div')(({ theme }) => ({
 	},
 	code: {
 		color: getColor(theme, 'code.text', 'secondary'),
-		backgroundColor: getColor(theme, 'highlight', 'highlight')
+		backgroundColor: getColor(theme, 'code.background', 'highlight'),
+		padding: `4px 7px`,
+		borderRadius: '0.3em',
+		whiteSpace: 'normal',
+		lineHeight: '1.5'
 	}
 	// blockquote
 	// heading
