@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 export default (props) => {
 	return (
 		<ThemeProvider theme={theme}>
-			<Layout px={3} py={3} mx="auto" maxWidth={1024}>
+			<Layout>
 				<Header>
 					<Box as="h1" fontSize={2} style={{ fontWeight: '300' }}>
 						Gatsby Theme Dracula
@@ -25,7 +25,9 @@ export default (props) => {
 					</Box>
 					<Box mx={1} />
 				</Header>
-				<Main>{props.children}</Main>
+				<Main px={3} py={3} mx="auto" maxWidth={1024}>
+					{props.children}
+				</Main>
 				<Footer py={4} fontSize={1}>
 					<a href="https://github.com/rajinwonderland/starter-to-theme">
 						GitHub
