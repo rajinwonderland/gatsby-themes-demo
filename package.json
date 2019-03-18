@@ -1,0 +1,19 @@
+{
+	"name": "gatsby-themes-playground",
+	"version": "1.15.2",
+	"main": "index.js",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"clean": "yarn workspaces run clean && rm -rf yarn-error.log",
+		"nuke": "yarn workspaces run nuke && rm -rf node_modules",
+		"rook": "yarn workspace",
+		"mdx": "yarn rook mdx-blog",
+		"system": "yarn rook color",
+		"space": "yarn workspaces info"
+	},
+	"workspaces": [
+		"packages/*",
+		"examples/*"
+	]
+}
