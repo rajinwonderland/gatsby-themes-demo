@@ -10,16 +10,7 @@ module.exports = (opts = {}) => {
 					defaultLayouts: {
 						default: require.resolve('./src/mdx-layout'),
 						...mdxLayouts
-					},
-					mdxPlugins: [
-						{
-							resolve: 'gatsby-remark-prismjs',
-							options: {
-								showLineNumbers: true,
-								noInlineHighlight: false
-							}
-						}
-					]
+					}
 				}
 			},
 			'gatsby-plugin-emotion',

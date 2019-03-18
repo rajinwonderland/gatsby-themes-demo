@@ -94,7 +94,10 @@ export const PreBlock = styled.div`
 	padding: 20px;
 	margin: 0 0 2em 0;
 	border-radius: 5px;
-	white-space: pre-wrap;
+	white-space: pre-line;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
+	react-highlight: {
+		white-space: pre-line !important;
+	}
 `;

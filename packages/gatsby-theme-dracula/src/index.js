@@ -6,7 +6,7 @@ import get from 'lodash.get';
 import merge from 'lodash.merge';
 import { useSiteMetadata } from './hooks';
 // theming
-import { ColorScheme, PreBlock } from './components';
+import { ColorScheme } from './components';
 import modern from '@styled-system/typography/modern';
 import Layout from './layout';
 import { MDXProvider } from '@mdx-js/tag';
@@ -17,17 +17,15 @@ const components = {
 	pre: (preProps) => {
 		const props = preToCodeBlock(preProps);
 		// if there's a codeString and some props, we passed the test
-		if (props['react-live']) {
+		if (props) {
 			return <Code {...props} />;
 		} else {
-			return (
-				<div className="code-toolbar">
-					<pre {...preProps} />
-				</div>
-			);
+			// it's possible to have a pre without a code in it
+			return <pre {...preProps} />;
 		}
 	}
 };
+
 export const colors = {
 	text: '#f8f8f2',
 	background: '#3c4556',
