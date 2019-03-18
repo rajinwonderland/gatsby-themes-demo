@@ -97,7 +97,8 @@ export const PreBlock = styled.div`
 	white-space: pre-line;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	react-highlight: {
+	.react-highlight {
 		white-space: pre-line !important;
+		font-weight: normal;
 	}
 `;

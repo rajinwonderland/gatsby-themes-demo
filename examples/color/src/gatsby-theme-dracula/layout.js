@@ -8,36 +8,38 @@ export default (props) => {
 		<ThemeProvider theme={theme}>
 			<Layout>
 				<Header>
-					<Box as="h1" fontSize={2} style={{ fontWeight: '300' }}>
-						Gatsby Theme Dracula
+					<Box my="1rem" />
+					<Box mx="auto">
+						<img
+							src="https://draculatheme.com/assets/img/icons/dracula.svg"
+							width="168px"
+							height="176px"
+						/>
 					</Box>
-					<Box mx="auto" />
-					<Box as={Link} to="/" color="inherit">
-						Home
-					</Box>
-					<Box mx={1} />
-					<Box as={Link} to="/getting-started" color="inherit">
-						Demo
-					</Box>
-					<Box mx={1} />
-					<Box as={Link} to="/freeform" color="inherit">
-						Test
-					</Box>
-					<Box mx={1} />
 				</Header>
 				<Main px={3} py={3} mx="auto" maxWidth={1024}>
 					{props.children}
 				</Main>
 				<Footer py={4} fontSize={1}>
-					<a href="https://github.com/rajinwonderland/starter-to-theme">
-						GitHub
-					</a>
-					<Box mx={1} />
-					<a href="https://github.com/rajinwonderland">
-						Made by @rajinwonderland
-					</a>
-					<Box mx="auto" />
-					<Box>© 2019 Rajinwonderland</Box>
+					<Box mx="auto" mx="auto">
+						<p className="credits">
+							Made with <span className="love">♥</span> by{' '}
+							<a
+								className="green"
+								href="https://github.com/rajinwonderland"
+								target="blank">
+								rajinwonderland
+							</a>
+							<br />
+							under{' '}
+							<a
+								className="orange"
+								href="http://zenorocha.mit-license.org/"
+								target="blank">
+								MIT license
+							</a>
+						</p>
+					</Box>
 				</Footer>
 			</Layout>
 		</ThemeProvider>
