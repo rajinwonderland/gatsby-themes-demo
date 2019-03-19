@@ -1,41 +1,56 @@
 import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
-import { Header, Box, Layout, Main, Footer, theme } from 'gatsby-theme-dracula';
+import { Col, Row, Box, Layout, Footer, theme } from 'gatsby-theme-dracula';
 import { Link } from 'gatsby';
+import { useSiteLinks } from '../hooks';
 
 export default (props) => {
+	const links = useSiteLinks();
+	console.log(links);
 	return (
 		<ThemeProvider theme={theme}>
 			<Layout>
-				<Header>
-					<Box as="h1" fontSize={2} style={{ fontWeight: '300' }}>
+				<Col width={1} bg={'#3c4556'}>
+					<Box mx="auto" my="1rem">
+						<img
+							src="https://draculatheme.com/assets/img/icons/dracula.svg"
+							width="168px"
+							height="176px"
+							alt="dracula-logo"
+						/>
+					</Box>
+					<Box as="h1" mx="auto" fontSize="3rem" color="#50fa7b">
 						Gatsby Theme Dracula
 					</Box>
-					<Box mx="auto" />
-					<Box as={Link} to="/" color="inherit">
-						Home
-					</Box>
-					<Box mx={1} />
-					<Box as={Link} to="/getting-started" color="inherit">
-						Demo
-					</Box>
-					<Box mx={1} />
-					<Box as={Link} to="/freeform" color="inherit">
-						Test
-					</Box>
-					<Box mx={1} />
-				</Header>
-				<Main>{props.children}</Main>
+					<Row width={1}>
+						{links.map((l) => (
+							<Box as={Link} key={l.path} to={l.path} mx="auto" my="1rem">
+								{l.name}
+							</Box>
+						))}
+					</Row>
+				</Col>
+				{props.children}
 				<Footer py={4} fontSize={1}>
-					<a href="https://github.com/rajinwonderland/starter-to-theme">
-						GitHub
-					</a>
-					<Box mx={1} />
-					<a href="https://github.com/rajinwonderland">
-						Made by @rajinwonderland
-					</a>
-					<Box mx="auto" />
-					<Box>© 2019 Rajinwonderland</Box>
+					<Box mx="auto">
+						<p className="credits">
+							Made with <span className="love">♥</span> by{' '}
+							<a
+								className="green"
+								href="https://github.com/rajinwonderland"
+								target="blank">
+								rajinwonderland
+							</a>
+							<br />
+							under{' '}
+							<a
+								className="orange"
+								href="http://rajinwonderland.mit-license.org/"
+								target="blank">
+								MIT license
+							</a>
+						</p>
+					</Box>
 				</Footer>
 			</Layout>
 		</ThemeProvider>

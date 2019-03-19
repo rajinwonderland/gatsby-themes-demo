@@ -6,31 +6,13 @@ import get from 'lodash.get';
 import merge from 'lodash.merge';
 import { useSiteMetadata } from './hooks';
 // theming
-import { ColorScheme, PreBlock } from './components';
+import { ColorScheme } from './components';
 import modern from '@styled-system/typography/modern';
 import Layout from './layout';
-import { MDXProvider } from '@mdx-js/tag';
-import { Code } from './code';
-import { preToCodeBlock } from 'mdx-utils';
-
-const components = {
-	pre: (preProps) => {
-		const props = preToCodeBlock(preProps);
-		// if there's a codeString and some props, we passed the test
-		if (props['react-live']) {
-			return <Code {...props} />;
-		} else {
-			return (
-				<PreBlock>
-					<pre {...preProps} />
-				</PreBlock>
-			);
-		}
-	}
-};
 export const colors = {
 	text: '#f8f8f2',
-	background: '#3c4556',
+	background: '#191c21',
+	partialBg: '#3c4556',
 	primary: '#00bcd4',
 	secondary: '#50fa7b',
 	highlight: '#8be9fd50',
@@ -74,7 +56,9 @@ const fonts = {
 };
 const typography = {
 	...modern,
-
+	p: {
+		lineHeight: '1.5'
+	},
 	h1: {
 		fontWeight: '300'
 	},
@@ -107,7 +91,11 @@ const styles = (theme) => ({
 	},
 	a: {
 		color: get(theme, 'colors.link'),
-		fontStyle: 'none'
+		textDecoration: 'none',
+		'&:hover': {
+			color: get(theme, 'colors.blue'),
+			textDecoration: 'underline'
+		}
 	}
 });
 
@@ -141,10 +129,6 @@ const Root = (props) => {
 
 export const wrapPageElement = ({ element, props }) => (
 	<Root {...props}>{element}</Root>
-);
-
-export const wrapRootElement = ({ element }) => (
-	<MDXProvider components={components}>{element}</MDXProvider>
 );
 
 export * from './components';
