@@ -28,7 +28,8 @@ const components = {
 
 export const colors = {
 	text: '#f8f8f2',
-	background: '#3c4556',
+	background: '#191c21',
+	partialBg: '#3c4556',
 	primary: '#00bcd4',
 	secondary: '#50fa7b',
 	highlight: '#8be9fd50',

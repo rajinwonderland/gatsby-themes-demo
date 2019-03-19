@@ -2,6 +2,34 @@ import styled from '@emotion/styled';
 import { space, width, fontSize, color } from 'styled-system';
 import get from 'lodash.get';
 
+export const getColor = (theme, value, fallback) =>
+	get(theme.colors, value, get(theme.colors, fallback, fallback));
+
+export const ColorScheme = styled('div')(({ theme }) => ({
+	color: getColor(theme, 'text', 'black'),
+	backgroundColor: getColor(theme, 'background', 'white'),
+	a: {
+		color: getColor(theme, 'link', 'primary'),
+		fontStyle: 'none',
+		'&:hover': {
+			color: getColor(theme, 'hover', 'secondary')
+		}
+	},
+	hr: {
+		borderColor: getColor(theme, 'border', 'muted')
+	},
+	code: {
+		color: getColor(theme, 'code.text', 'secondary'),
+		backgroundColor: getColor(theme, 'code.background', 'highlight'),
+		padding: `4px 7px`,
+		borderRadius: '0.3em',
+		whiteSpace: 'normal',
+		lineHeight: '1.5'
+	}
+	// blockquote
+	// heading
+}));
+
 export const Box = styled('div')(space, fontSize, width, color);
 
 export const Layout = styled(Box)({
@@ -10,6 +38,15 @@ export const Layout = styled(Box)({
 	flexDirection: 'column'
 });
 
+export const Row = styled(Box)({
+	display: 'flex',
+	flexDirection: 'row'
+});
+
+export const Col = styled(Box)({
+	display: 'flex',
+	flexDirection: 'column'
+});
 export const Header = styled(Box)({
 	display: 'flex',
 	flexDirection: 'row',
@@ -21,7 +58,7 @@ Header.defaultProps = {
 	px: 4,
 	py: 3,
 	color: 'white',
-	bg: '#282a36'
+	bg: ({ theme }) => getColor(theme, 'code.partialBg', 'background')
 };
 
 export const Footer = styled(Header)({});
@@ -31,7 +68,7 @@ Footer.defaultProps = {
 	px: 4,
 	py: 3,
 	color: 'white',
-	bg: '#282a36'
+	bg: ({ theme }) => getColor(theme, 'partialBg', '#3c4556')
 };
 
 export const Main = styled(Box)({
@@ -61,33 +98,6 @@ export const Main = styled(Box)({
 //      - text
 //      - background
 //    - border
-export const getColor = (theme, value, fallback) =>
-	get(theme.colors, value, get(theme.colors, fallback, fallback));
-
-export const ColorScheme = styled('div')(({ theme }) => ({
-	color: getColor(theme, 'text', 'black'),
-	backgroundColor: getColor(theme, 'background', 'white'),
-	a: {
-		color: getColor(theme, 'link', 'primary'),
-		fontStyle: 'none',
-		'&:hover': {
-			color: getColor(theme, 'hover', 'secondary')
-		}
-	},
-	hr: {
-		borderColor: getColor(theme, 'border', 'muted')
-	},
-	code: {
-		color: getColor(theme, 'code.text', 'secondary'),
-		backgroundColor: getColor(theme, 'code.background', 'highlight'),
-		padding: `4px 7px`,
-		borderRadius: '0.3em',
-		whiteSpace: 'normal',
-		lineHeight: '1.5'
-	}
-	// blockquote
-	// heading
-}));
 
 export const PreBlock = styled.div`
 	background-color: #282a36 !important;
