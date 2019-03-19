@@ -1,6 +1,5 @@
+const path = require('path');
 module.exports = (opts = {}) => {
-	const { mdxLayouts = {} } = opts;
-
 	return {
 		plugins: [
 			{
@@ -8,8 +7,7 @@ module.exports = (opts = {}) => {
 				options: {
 					extensions: ['.mdx', '.md'],
 					defaultLayouts: {
-						default: require.resolve('./src/mdx-layout'),
-						...mdxLayouts
+						default: require.resolve('./src/mdx-layout')
 					}
 				}
 			},
@@ -19,6 +17,19 @@ module.exports = (opts = {}) => {
 				resolve: 'gatsby-plugin-compile-es6-packages',
 				options: {
 					modules: ['gatsby-theme-dracula']
+				}
+			},
+			{
+				resolve: `gatsby-source-filesystem`,
+				options: {
+					path: path.resolve(__dirname, `./content/assets`),
+					name: `assets`
+				}
+			},
+			{
+				resolve: `gatsby-plugin-page-creator`,
+				options: {
+					path: require.resolve(__dirname, `src/pages`)
 				}
 			}
 		],

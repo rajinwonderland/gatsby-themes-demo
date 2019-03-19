@@ -2,15 +2,15 @@ import { graphql, useStaticQuery } from 'gatsby';
 export const useSiteLinks = () => {
 	const data = useStaticQuery(graphql`
 		{
-			allSitePage {
-				edges {
-					node {
-						internalComponentName
+			site {
+				siteMetadata {
+					links {
+						name
 						path
 					}
 				}
 			}
 		}
 	`);
-	return data.allSitePage.edges.map((l) => l.node);
+	return data.site.siteMetadata.links;
 };
