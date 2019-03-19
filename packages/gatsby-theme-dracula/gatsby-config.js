@@ -5,10 +5,7 @@ module.exports = (opts = {}) => {
 			{
 				resolve: 'gatsby-mdx',
 				options: {
-					extensions: ['.mdx', '.md'],
-					defaultLayouts: {
-						default: require.resolve('./src/mdx-layout')
-					}
+					extensions: ['.mdx', '.md']
 				}
 			},
 			'gatsby-plugin-emotion',

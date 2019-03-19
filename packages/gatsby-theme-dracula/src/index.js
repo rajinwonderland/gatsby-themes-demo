@@ -9,23 +9,6 @@ import { useSiteMetadata } from './hooks';
 import { ColorScheme } from './components';
 import modern from '@styled-system/typography/modern';
 import Layout from './layout';
-import { MDXProvider } from '@mdx-js/tag';
-import { Code } from './code';
-import { preToCodeBlock } from 'mdx-utils';
-
-const components = {
-	pre: (preProps) => {
-		const props = preToCodeBlock(preProps);
-		// if there's a codeString and some props, we passed the test
-		if (props) {
-			return <Code {...props} />;
-		} else {
-			// it's possible to have a pre without a code in it
-			return <pre {...preProps} />;
-		}
-	}
-};
-
 export const colors = {
 	text: '#f8f8f2',
 	background: '#191c21',
@@ -146,10 +129,6 @@ const Root = (props) => {
 
 export const wrapPageElement = ({ element, props }) => (
 	<Root {...props}>{element}</Root>
-);
-
-export const wrapRootElement = ({ element }) => (
-	<MDXProvider components={components}>{element}</MDXProvider>
 );
 
 export * from './components';
