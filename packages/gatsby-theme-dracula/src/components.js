@@ -19,7 +19,7 @@ export const ColorScheme = styled('div')(({ theme }) => ({
 		borderColor: getColor(theme, 'border', 'muted')
 	},
 	code: {
-		color: getColor(theme, 'code.text', 'secondary'),
+		color: getColor(theme, 'text', 'secondary'),
 		backgroundColor: getColor(theme, 'code.background', 'highlight'),
 		padding: `4px 7px`,
 		borderRadius: '0.3em',
@@ -103,6 +103,7 @@ export const PreBlock = styled.div`
 	background-color: #282a36 !important;
 	padding: 20px;
 	margin: 0 0 2em 0;
+	font-family: 'Fira Code', monospace !important;
 	border-radius: 5px;
 	white-space: pre-line;
 	word-wrap: break-word;
