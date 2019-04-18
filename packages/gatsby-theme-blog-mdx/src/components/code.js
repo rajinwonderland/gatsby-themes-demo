@@ -1,11 +1,11 @@
 import React from 'react'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
-import nightOwl from 'prism-react-renderer/themes/nightOwl'
+import dracula from 'prism-react-renderer/themes/dracula'
 export const Code = ({ codeString, language, ...props }) => {
   if (props['react-live']) {
     return (
-      <LiveProvider code={codeString} noInline={true} theme={nightOwl}>
+      <LiveProvider code={codeString} theme={dracula}>
         <LiveEditor />
         <LiveError />
         <LivePreview />
@@ -17,7 +17,7 @@ export const Code = ({ codeString, language, ...props }) => {
         {...defaultProps}
         code={codeString}
         language={language}
-        theme={nightOwl}
+        theme={dracula}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className} style={style}>
